@@ -15,9 +15,9 @@ class Category(models.Model):
                 return self.name
         def get_absolute_url(self):
             return reverse('newstep.views.category', args=[self.slug])
-        @property
-        def get_products(self):
-            return Category.objects.filter(category=self.name)
+#        @property
+#        def get_products(self):
+#            return Category.objects.filter(category=self.name)
 
         class Meta:
             managed = False     

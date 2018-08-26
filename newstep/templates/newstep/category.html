@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Newstep</title>
+        <title>Rango</title>
     </head>
 
     <body>
-        <h1>{{ category_name }}</h1>
-            
-	     
         {% if category %}
-            <ul>
-                {% for cat in category %}    
-                
-                <li><a href="{% url 'newstep:category' cat.slug %}">{{ cat.name }}</a></li>
-                {% endfor %}
-                
-            </ul>  
+        <h1>{{ category_name }}</h1>
             {% if pages %}
             <ul>
-                {% for page in category.pages_set.all %}
+                {% for page in pages %}
                 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
@@ -26,7 +17,7 @@
                 <strong>No pages currently in category.</strong>
             {% endif %}
         {% else %}
-            The specified category {{ newstep_category_name }} does not exist!
+            The specified category {{ category_name }} does not exist!
         {% endif %}
     </body>
 </html>

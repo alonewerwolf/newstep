@@ -20,10 +20,12 @@ def category(request, category_name_slug):
 
         category = Category.objects.get(slug=category_name_slug)
 
-        pages = Page.objects.filter(category_name_exact=category)
+        pages = Page.objects.filter(category = category.id)
  
         context_dict['pages'] = pages
         context_dict['category'] = category
+        context_dict['category_name'] = category.name
+      
     except Category.DoesNotExist:
 
         context_dict['category'] = None
