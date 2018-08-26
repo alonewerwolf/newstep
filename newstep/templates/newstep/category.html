@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Newstep</title>
+    </head>
+
+    <body>
+        <h1>{{ category_name }}</h1>
+            
+	     
+        {% if category %}
+            <ul>
+                {% for cat in category %}    
+                
+                <li><a href="{% url 'newstep:category' cat.slug %}">{{ cat.name }}</a></li>
+                {% endfor %}
+                
+            </ul>  
+            {% if pages %}
+            <ul>
+                {% for page in category.pages_set.all %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No pages currently in category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ newstep_category_name }} does not exist!
+        {% endif %}
+    </body>
+</html>
